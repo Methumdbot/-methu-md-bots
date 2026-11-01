@@ -1,0 +1,9 @@
+{
+  "name": "methu-md-pairing-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"start": "node server.js"},
+  "engines": {"node": ">=20"},
+  "dependencies": {"@whiskeysockets/baileys": "7.0.0-rc14", "cors": "^2.8.5", "express": "^5.1.0", "express-rate-limit": "^8.1.0", "pino": "^9.9.0"}
+}
