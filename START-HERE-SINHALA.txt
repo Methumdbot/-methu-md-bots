@@ -1,9 +1,0 @@
-METHU MD BOTS — Pairing Code Edition
-
-ඔයාට folders දෙකක් ලැබෙනවා:
-1) website — GitHub Pages එකට upload කරන්න.
-2) pairing-backend — Node.js host එකක deploy කරන්න.
-
-මුලින් pairing-backend/README-SINHALA.txt කියවන්න. Backend deploy කරලා URL එක ලැබුණාම website/app.js එකේ PAIRING_API_URL වෙනස් කරන්න. ඊට පස්සේ website folder එකේ files GitHub repository එකට upload කරන්න.
-
-සටහන: Backend deploy නොකරන තුරු Pairing Code button එකෙන් සැබෑ code එකක් ලැබෙන්නේ නැහැ. GitHub Pages එක static hosting එකක් පමණයි.
