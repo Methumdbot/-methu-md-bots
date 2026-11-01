@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>METHU MD BOTS</title>
+  <meta name="description" content="Explore WhatsApp bots by METHU MD.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">M</span><span>METHU <b>MD</b><small>BOTS DIRECTORY</small></span></a>
+    <nav><a href="#bots">Bots</a><a href="#pairing">Pairing</a><a href="#about">About</a><button id="adminOpen" class="button button-outline">Admin Login</button></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="live-dot"></span> NEXT-GEN BOT COLLECTION</div>
+      <h1>WELCOME TO<br><span>METHU MD BOTS</span></h1>
+      <p class="hero-copy">Discover useful WhatsApp bots, tools and services — all in one place.</p>
+      <a class="button button-red" href="#bots">Explore Bots <span>↘</span></a>
+      <div class="hero-line"><span></span> SIMPLE · POWERFUL · ALWAYS EVOLVING</div>
+    </section>
+
+    <section id="bots" class="directory">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE COLLECTION</div><h2>Explore <span>Our Bots</span></h2></div>
+        <div class="count" id="botCount">0 BOTS</div>
+      </div>
+      <div class="toolbar">
+        <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search bots by name or description..."></label>
+        <select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option></select>
+      </div>
+      <div id="botGrid" class="bot-grid">
+        <div class="empty-state">Loading bots...</div>
+      </div>
+    </section>
+
+    <section id="pairing" class="pairing-section">
+      <div class="section-heading"><div><div class="eyebrow">WHATSAPP LINKING TOOL</div><h2>Get <span>Pairing Code</span></h2></div><div class="count">8 DIGITS</div></div>
+      <div class="pairing-card">
+        <p class="pairing-intro">Enter your own WhatsApp number with country code to request a device-linking code.</p>
+        <form id="pairingForm" class="pairing-form">
+          <label for="pairingNumber">WhatsApp number (country code included)</label>
+          <input id="pairingNumber" type="tel" inputmode="numeric" autocomplete="tel" placeholder="947XXXXXXXX" minlength="8" maxlength="15" required>
+          <button id="pairingButton" class="button button-red full" type="submit">Generate Pairing Code</button>
+        </form>
+        <div id="pairingResult" class="pairing-result" aria-live="polite">Your pairing code will appear here.</div>
+        <p class="pairing-help">Use digits only. Example for Sri Lanka: 94XXXXXXXXX (do not add + or spaces). On WhatsApp, open Linked Devices → Link a Device → Link with phone number.</p>
+        <p class="pairing-warning">Only request a code for a number you own or have permission to link. This is an unofficial WhatsApp Web connection tool.</p>
+      </div>
+    </section>
+
+    <section id="about" class="about-panel">
+      <div class="about-icon">✦</div><div><div class="eyebrow">ABOUT THIS PROJECT</div><h2>Built for the <span>bot community.</span></h2><p>METHU MD BOTS is a growing directory. Check back for new bots and updates.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">M</span><span>METHU <b>MD</b><small>BOTS DIRECTORY</small></span></a><span>© <span id="year"></span> METHU MD BOTS. All rights reserved.</span></footer>
+
+  <div id="adminModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close="true" aria-label="Close">×</button>
+      <div class="eyebrow">PRIVATE AREA</div><h2 id="modalTitle">Admin <span>Login</span></h2>
+      <p class="muted">Sign in with the admin account created in Supabase.</p>
+      <form id="loginForm" class="form-stack">
+        <label>Email<input id="loginEmail" type="email" autocomplete="username" required placeholder="Admin email"></label>
+        <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+        <button class="button button-red full" type="submit">Sign in securely</button>
+      </form>
+      <p id="loginMessage" class="message" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <div id="dashboardModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <section class="modal-card modal-wide" role="dialog" aria-modal="true" aria-labelledby="dashboardTitle">
+      <button class="modal-close" data-close="true" aria-label="Close">×</button>
+      <div class="dashboard-head"><div><div class="eyebrow">CONTROL CENTER</div><h2 id="dashboardTitle">Bot <span>Manager</span></h2></div><button id="logoutButton" class="button button-outline">Log out</button></div>
+      <form id="botForm" class="bot-form">
+        <input id="botId" type="hidden">
+        <label>Bot name<input id="botName" required maxlength="70" placeholder="Example: METHU MD AI"></label>
+        <label>Category<input id="botCategory" maxlength="40" placeholder="WhatsApp / AI / Tools"></label>
+        <label>Short description<textarea id="botDescription" required maxlength="240" rows="3" placeholder="What does this bot do?"></textarea></label>
+        <label>Image URL<input id="botImage" type="url" placeholder="https://example.com/bot-image.jpg"></label>
+        <label>Bot / Website link<input id="botLink" type="url" required placeholder="https://..."></label>
+        <label class="checkbox-label"><input id="botActive" type="checkbox" checked> Show this bot publicly</label>
+        <div class="form-actions"><button class="button button-red" type="submit" id="saveBotButton">Add bot</button><button class="button button-outline" type="button" id="cancelEditButton">Clear</button></div>
+      </form>
+      <div class="admin-list-head"><h3>Manage bots</h3><span id="adminBotCount" class="count">0 BOTS</span></div>
+      <div id="adminBotList" class="admin-bot-list"></div>
+      <p id="dashboardMessage" class="message" aria-live="polite"></p>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
